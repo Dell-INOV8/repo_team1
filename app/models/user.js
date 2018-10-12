@@ -1,4 +1,4 @@
-// app/models/nerd.js
+// app/models/user.js
 // grab the mongoose module
 var mongoose = require('mongoose');
 

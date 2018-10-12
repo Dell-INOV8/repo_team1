@@ -12,10 +12,13 @@ var methodOverride = require('method-override');
 var db = require('./config/db');
 
 // set our port
-var port = process.env.PORT || 8080; 
+var port = process.env.PORT || 8082; 
+
+// grab the mongoose module
+var mongoose = require('mongoose');
 
 // connect to our mongoDB database 
-mongoose.connect(db.url); 
+mongoose.connect(db.url,  { useNewUrlParser: true }); 
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
