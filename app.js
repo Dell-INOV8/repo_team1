@@ -1,8 +1,14 @@
-var express = require("express");
-var app = express();
-var path = require("path");
-//var formRouter = require('./routes/formRouter');
-
+var	express 				= require("express"),
+		path 						= require("path"),
+		app 						= express(),
+		bodyParser 			= require("body-parser"),
+		mongoose				= require("mongoose"),
+		flash						= require("connect-flash"),
+		passport 				= require("passport"),
+		LocalStrategy 	= require("passport-local"),
+		methodOverride  = require("method-override"),
+		User						= require("./models/user"),
+		seedDB 					= require("./seeds");
 
 app.use(express.static(__dirname + '/views/'));
 
@@ -14,12 +20,13 @@ app.get("/", function(req, res) {
 	res.render('home');
 });
 
-app.get("/home", function(req, res) {
-	res.render('template-update');
-});
+// ================= //
+//  Register Routes  //
+// ================= //
 
-app.get("/form", function(req, res) {
-	res.render('form');
+// show register form
+router.get("/register", function(req, res) {
+	res.render("register", {page: 'register'});
 });
 
 app.get("*", function(req, res) {
